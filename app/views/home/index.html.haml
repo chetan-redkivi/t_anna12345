@@ -1,0 +1,20 @@
+%br
+= flash[:notice]
+%br
+- if user_signed_in?
+  %table
+    - @filtered_tweets.each do |filtered_tweet|
+      %tr
+        %td{:width => "400px;",:align => "center"}
+          - if filtered_tweet["text"].size > 0
+            - filtered_tweet["text"].each do |url|
+              = link_to "#{url}",url,:target => "_blank"
+              %br
+  = link_to "Logout",destroy_user_session_path
+- else
+  To Test Twitter analysis you need to connect with Twitter.
+  %br
+  = link_to "Connect with Twitter",user_omniauth_authorize_path(:twitter)
+
+
+
