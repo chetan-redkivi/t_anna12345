@@ -3,11 +3,11 @@
 %br
 - if user_signed_in?
   %table
-    - @filtered_tweets.each do |filtered_tweet|
+    - @filtered_tweet_url.each do |filtered_tweet|
       %tr
         %td{:width => "400px;",:align => "center"}
-          - if filtered_tweet["text"].size > 0
-            - filtered_tweet["text"].each do |url|
+          - if filtered_tweet["url"].size > 0
+            - filtered_tweet["url"].each do |url|
               = link_to "#{url}",url,:target => "_blank"
               %br
   = link_to "Logout",destroy_user_session_path
