@@ -32,6 +32,8 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'omniauth-twitter'
 gem 'twitter'
+gem 'tweetstream'
+gem "eventmachine"
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

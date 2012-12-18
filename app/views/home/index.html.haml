@@ -2,14 +2,108 @@
 = flash[:notice]
 %br
 - if user_signed_in?
+  %h3
+    Information
   %table
-    - @filtered_tweet_url.each do |filtered_tweet|
-      %tr
-        %td{:width => "400px;",:align => "center"}
-          - if filtered_tweet["url"].size > 0
-            - filtered_tweet["url"].each do |url|
-              = link_to "#{url}",url,:target => "_blank"
-              %br
+    %tr
+      %td
+        Name:
+      %td
+        = @tweets.first.user.name
+    %tr
+      %td
+        Joined Twitter on:
+      %td
+        = " #{@tweets.first.user.created_at.to_datetime}"
+    %tr
+      %td
+        Location:
+      %td
+        = " #{@tweets.first.user.location}"
+    %tr
+      %td
+        Timezone:
+      %td
+        = " #{@tweets.first.user.time_zone}"
+    %tr
+      %td
+        Language:
+      %td
+        = " #{@tweets.first.user.lang} "
+    %tr
+      %td
+        Bio
+      %td
+        = "#{@tweets.first.user.description} "
+    %tr
+      %td
+        URL:
+      %td
+        = "#{@tweets.first.user.url} "
+
+  %h3
+    Statistics
+  %table
+    %tr
+      %td
+        Tweets:
+      %td
+        = @tweets.first.user.statuses_count
+    %tr
+      %td
+        Followers:
+      %td
+        =  @tweets.first.user.followers_count
+    %tr
+      %td
+        Following:
+      %td
+        = @tweets.first.user.friends_count
+    %tr
+      %td
+        Followers ratio:
+      %td
+        = @ratio
+    %tr
+      %td
+        Listed:
+      %td
+        = @tweets.first.user.listed_count
+
+  %h3
+    = "#Hashtags"
+  = @arr_hash
+
+  %h3
+    = "@ Mentions"
+  = @arr_mention
+
+  %h3
+    Tweets Analysis
+  %table
+    %tr
+      %td
+        Tweets with @mentions:
+      %td
+        = @tweet_with_mentions
+    %tr
+      %td
+        Tweets with #hashtags:
+      %td
+        = @tweet_with_hashtag
+    %tr
+      %td
+        Tweets with links:
+      %td
+        = @tweet_with_links
+  -#%table
+  -#  - @filtered_tweet_url.each do |filtered_tweet|
+  -#    %tr
+  -#      %td{:width => "400px;",:align => "center"}
+  -#        - if filtered_tweet["url"].size > 0
+  -#          - filtered_tweet["url"].each do |url|
+  -#            = link_to "#{url}",url,:target => "_blank"
+  -#            %br
   = link_to "Logout",destroy_user_session_path
 - else
   To Test Twitter analysis you need to connect with Twitter.

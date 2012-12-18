@@ -9,7 +9,11 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     #	render :text => request.env["omniauth.auth"].inspect and return false
 
+    Rails.logger.info("============================================================================================")
 
+    Rails.logger.info("#{request.env["omniauth.auth"]}")
+
+    Rails.logger.info("============================================================================================")
     user = User.find_by_email(@email)
     if user.present?
       user
