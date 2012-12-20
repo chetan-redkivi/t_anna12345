@@ -83,6 +83,11 @@
   %table
     %tr
       %td
+        Replies:
+      %td
+        = @reply_count
+    %tr
+      %td
         Tweets with @mentions:
       %td
         = @tweet_with_mentions
@@ -93,9 +98,19 @@
         = @tweet_with_hashtag
     %tr
       %td
+        Retweets:
+      %td
+        = @retweet_count
+    %tr
+      %td
         Tweets with links:
       %td
         = @tweet_with_links
+    %tr
+      %td
+        Tweets with media:
+      %td
+        = @tweet_with_media
   -#%table
   -#  - @filtered_tweet_url.each do |filtered_tweet|
   -#    %tr
